@@ -65,7 +65,7 @@ jobs:
           tag_name: ${{ format('v{0}', steps.current-time.outputs.formattedTime) }}
           release_name: ${{ format('v9.x build-{0}', steps.current-time.outputs.formattedTime) }}
           body: |
-            build pve qemu deb form v7.0.0-1 to v9.x， from v9.1 support nvidia vgpu（no 43 code error）
+            build pve qemu deb form v7.0.0-1 to v9.x，from v8.1.5-6 support nvidia vgpu（no 43 code error）
           draft: false
           prerelease: false
         env:
