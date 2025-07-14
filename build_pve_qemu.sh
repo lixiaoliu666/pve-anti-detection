@@ -17,7 +17,6 @@ bash sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 cp ../../smbios.h include/hw/firmware/smbios.h
 cp ../../smbios.c hw/smbios/smbios.c
 git diff > qemu-autoGenPatch.patch
-sed -i 's/!object_dynamic_cast/object_dynamic_cast/g' hw/vfio/igd.c
 cp qemu-autoGenPatch.patch ../
 cd ..
 apt install devscripts -y
