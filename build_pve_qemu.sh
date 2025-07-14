@@ -5,7 +5,7 @@ ls
 df -h
 git clone git://git.proxmox.com/git/pve-qemu.git
 cd pve-qemu
-git reset --hard 50717bf6dfbc16a65007ff92d4dfea54dd578f74
+git reset --hard 8fcd89fba89aa1b6688dced44947edeee5071c69
 apt install devscripts -y
 mk-build-deps --install
 make
@@ -17,6 +17,7 @@ bash sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 cp ../../smbios.h include/hw/firmware/smbios.h
 cp ../../smbios.c hw/smbios/smbios.c
 git diff > qemu-autoGenPatch.patch
+sed -i 's/!object_dynamic_cast/object_dynamic_cast/g' hw/vfio/igd.c
 cp qemu-autoGenPatch.patch ../
 cd ..
 apt install devscripts -y
