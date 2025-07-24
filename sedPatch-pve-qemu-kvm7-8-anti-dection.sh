@@ -51,7 +51,7 @@ sed -i 's/Standard PC (Q35 + ICH9, 2009)/'${brand}' M4A88TD-Mq35/g' hw/i386/pc_q
 sed -i 's/mc->name, pcmc->smbios_legacy_mode,/"'${brand}'-PC", pcmc->smbios_legacy_mode,/g' hw/i386/pc_q35.c
 sed -i 's/"QEMU/"'${brand}'/g' hw/ide/atapi.c
 sed -i 's/"QEMU/"'${brand}'/g' hw/ide/core.c
-sed -i 's/QM%05d/'${brand}'%05d/g' hw/ide/core.c
+sed -i 's/QM%05d/'${brand}'0000000097t%05d/g' hw/ide/core.c  #ide sata硬盘序列号
 sed -i 's/"QEMU/"'${brand}'/g' hw/input/adb-kbd.c
 sed -i 's/"QEMU/"'${brand}'/g' hw/input/adb-mouse.c
 sed -i 's/"QEMU/"'${brand}'/g' hw/input/ads7846.c
