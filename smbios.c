@@ -29,6 +29,8 @@
 #include "hw/pci/pci_bus.h"
 #include "hw/pci/pci_device.h"
 #include "smbios_build.h"
+#include <stdio.h>
+char motherboard[21];
 
 /*
  * SMBIOS tables provided by user with '-smbios file=<foo>' option
@@ -769,9 +771,11 @@ static void smbios_encode_uuid(struct smbios_uuid *uuid, QemuUUID *in)
 static void smbios_build_type_1_table(void)
 {
     SMBIOS_BUILD_TABLE_PRE(1, T1_BASE, true); /* required */
-
+	srand(time(NULL));
+	snprintf(motherboard,sizeof(motherboard),
+                 "MS-Terminator B7%02dM", rand()%100);
     SMBIOS_TABLE_SET_STR(1, manufacturer_str, "Maxsun"); //李晓流 dds666 modify 
-    SMBIOS_TABLE_SET_STR(1, product_name_str, "MS-Terminator B760M"); //李晓流 dds666 modify 
+    SMBIOS_TABLE_SET_STR(1, product_name_str, motherboard); //李晓流 dds666 modify 
     SMBIOS_TABLE_SET_STR(1, version_str, "VER:H3.7G(2022/11/29)"); //李晓流 dds666 modify 
     SMBIOS_TABLE_SET_STR(1, serial_number_str, "Default string"); //李晓流 dds666 modify 
     if (qemu_uuid_set) {
@@ -791,7 +795,7 @@ static void smbios_build_type_2_table(void)
     SMBIOS_BUILD_TABLE_PRE(2, T2_BASE, true); /* optional */
 
     SMBIOS_TABLE_SET_STR(2, manufacturer_str, "Maxsun"); //李晓流 dds666 modify 
-    SMBIOS_TABLE_SET_STR(2, product_str, "MS-Terminator B760M"); //李晓流 dds666 modify 
+    SMBIOS_TABLE_SET_STR(2, product_str, motherboard); //李晓流 dds666 modify 
     SMBIOS_TABLE_SET_STR(2, version_str, "VER:H3.7G(2022/11/29)"); //李晓流 dds666 modify 
     SMBIOS_TABLE_SET_STR(2, serial_number_str, "Default string"); //李晓流 dds666 modify 
     SMBIOS_TABLE_SET_STR(2, asset_tag_number_str,"Default string"); //李晓流 dds666 modify 
@@ -857,14 +861,14 @@ static void smbios_build_type_4_table(MachineState *ms, unsigned instance,
     }
     SMBIOS_TABLE_SET_STR(4, processor_version_str, "12th Gen Intel(R) Core(TM) i7"); //李晓流 dds666 modify 
     t->voltage = 0x8B;
-    t->external_clock = cpu_to_le16(100); /* Unknown */ //李晓流 dds666 modify 外频100mhz
-    t->max_speed = cpu_to_le16(4900); //李晓流 dds666 modify 最大频率4.9gzh
-    t->current_speed = cpu_to_le16(4455); //李晓流 dds666 modify 当前频率4455mhz
+    t->external_clock = cpu_to_le16(0); /* Unknown */
+    t->max_speed = cpu_to_le16(type4.max_speed);
+    t->current_speed = cpu_to_le16(type4.current_speed);
     t->status = 0x41; /* Socket populated, CPU enabled */
     t->processor_upgrade = 0x01; /* Other */
-    t->l1_cache_handle = cpu_to_le16(0x0051); /* N/A */ //李晓流 dds666 modify L1缓存抄写物理机
-    t->l2_cache_handle = cpu_to_le16(0x0052); /* N/A */ //李晓流 dds666 modify L2缓存抄写物理机
-    t->l3_cache_handle = cpu_to_le16(0x0053); /* N/A */ //李晓流 dds666 modify L3缓存抄写物理机
+    t->l1_cache_handle = cpu_to_le16(0xFFFF); /* N/A */
+    t->l2_cache_handle = cpu_to_le16(0xFFFF); /* N/A */
+    t->l3_cache_handle = cpu_to_le16(0xFFFF); /* N/A */
     SMBIOS_TABLE_SET_STR(4, serial_number_str, "To Be Filled By O.E.M."); //李晓流 dds666
     SMBIOS_TABLE_SET_STR(4, asset_tag_number_str, "To Be Filled By O.E.M."); //李晓流 dds666
     SMBIOS_TABLE_SET_STR(4, part_number_str, "To Be Filled By O.E.M."); //李晓流 dds666
@@ -1052,10 +1056,16 @@ static void smbios_build_type_17_table(unsigned instance, uint64_t size)
     t->memory_type = 0x1A; /* DDR4 */  //李晓流 dds666 modify ddr4类型
     t->type_detail = cpu_to_le16(0x80); /* test 0x80*/ //李晓流 dds666 modify 0x80代表 Synchronous
     t->speed = cpu_to_le16(3200); //李晓流 dds666 modify 3200mhz
-    SMBIOS_TABLE_SET_STR(17, manufacturer_str, "KINGSTON"); //李晓流 dds666 modify 
-    SMBIOS_TABLE_SET_STR(17, serial_number_str, "DF1EC466"); //李晓流 dds666 modify 
-    SMBIOS_TABLE_SET_STR(17, asset_tag_number_str, "9876543210"); //李晓流 dds666 modify 
-    SMBIOS_TABLE_SET_STR(17, part_number_str, "SED3200U1888S"); //李晓流 dds666 modify 
+    SMBIOS_TABLE_SET_STR(17, manufacturer_str, "KINGSTON"); //李晓流 dds666 modify
+	
+	char memory_serial_number[11];
+	srand(time(NULL));
+	snprintf(memory_serial_number,sizeof(memory_serial_number),
+                 "DDS666%03d", rand()%1000);
+
+    SMBIOS_TABLE_SET_STR(17, serial_number_str, memory_serial_number); //李晓流 dds666 modify 
+    SMBIOS_TABLE_SET_STR(17, asset_tag_number_str, memory_serial_number); //李晓流 dds666 modify 
+    SMBIOS_TABLE_SET_STR(17, part_number_str, memory_serial_number); //李晓流 dds666 modify 
     t->attributes = 1; /* test 1 */ //李晓流 dds666 modify 1代表 记不得了，你要测一下
     t->configured_clock_speed = t->speed; /* reuse value for max speed */
     t->minimum_voltage = cpu_to_le16(1200); /* Unknown */ //李晓流 dds666 modify 1.2v
@@ -1180,10 +1190,10 @@ void smbios_set_defaults(const char *manufacturer, const char *product,
     smbios_have_defaults = true;
 
     SMBIOS_SET_DEFAULT(smbios_type1.manufacturer, "Maxsun"); //李晓流 dds666 modify
-    SMBIOS_SET_DEFAULT(smbios_type1.product, "MS-Terminator B760M"); //李晓流 dds666 modify
+    SMBIOS_SET_DEFAULT(smbios_type1.product, motherboard); //李晓流 dds666 modify
     SMBIOS_SET_DEFAULT(smbios_type1.version, "VER:H3.7G(2022/11/29)"); //李晓流 dds666 modify
     SMBIOS_SET_DEFAULT(type2.manufacturer, "Maxsun"); //李晓流 dds666 modify
-    SMBIOS_SET_DEFAULT(type2.product, "MS-Terminator B760M"); //李晓流 dds666 modify
+    SMBIOS_SET_DEFAULT(type2.product, motherboard); //李晓流 dds666 modify
     SMBIOS_SET_DEFAULT(type2.version, "VER:H3.7G(2022/11/29)"); //李晓流 dds666 modify
     SMBIOS_SET_DEFAULT(type3.manufacturer, "Default string"); //李晓流 dds666 modify
     SMBIOS_SET_DEFAULT(type3.version, "Default string"); //李晓流 dds666 modify
@@ -1792,4 +1802,5 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
 
     error_setg(errp, "Must specify type= or file=");
 }
+
 
