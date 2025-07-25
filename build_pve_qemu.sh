@@ -24,3 +24,6 @@ cd ..
 apt install devscripts -y
 mk-build-deps --install
 make
+cd qemu/
+git checkout .
+cd ..
