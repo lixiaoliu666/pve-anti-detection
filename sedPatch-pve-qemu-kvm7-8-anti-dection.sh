@@ -51,7 +51,13 @@ sed -i 's/Standard PC (Q35 + ICH9, 2009)/'${brand}' M4A88TD-Mq35/g' hw/i386/pc_q
 sed -i 's/mc->name, pcmc->smbios_legacy_mode,/"'${brand}'-PC", pcmc->smbios_legacy_mode,/g' hw/i386/pc_q35.c
 sed -i 's/"QEMU/"'${brand}'/g' hw/ide/atapi.c
 sed -i 's/"QEMU/"'${brand}'/g' hw/ide/core.c
-sed -i 's/QM%05d/'${brand}'0000000097t%05d/g' hw/ide/core.c  #ide sata硬盘序列号
+#sed -i 's/QM%05d/'${brand}'-lixiaoliu666-%02d/g' hw/ide/core.c  #ide sata硬盘序列号drive_serial_str 20字符大小 这个是固定硬盘序列号方法，下面三行是硬盘随机序列号方法
+sed -i 's/#include "trace.h"/#include "trace.h"\n#include <stdio.h>/g' hw/ide/core.c  #为下面一行使用随机函数rand()增加所依赖的头文件
+sed -i 's/if (dev->serial)/srand(time(NULL));\n\tif (dev->serial)/g' hw/ide/core.c  ##为下面一行使用随机函数rand()增加用于伪随机数生成算法播种srand(time(NULL)); 不加无法随机
+sed -i 's/QM%05d", s->drive_serial/'${brand}'-%04d-lixiaoliu", rand()%10000/g' hw/ide/core.c  #ide sata硬盘序列号drive_serial_str 20字符大小
+sed -i 's/qemu_hw_version()/s->drive_serial_str/g' hw/ide/core.c  #ide sata 固件version 随机固件,借用硬盘序列号前8位 8字符大小
+sed -i 's/0x09, 0x03, 0x00, 0x64, 0x64, 0x01, 0x00/0x09, 0x03, 0x00, 0x64, 0x64, 0x9a, 0x02/g' hw/ide/core.c  #ide sata 通电时间power on hours改为666小时 0x029a
+sed -i 's/0x0c, 0x03, 0x00, 0x64, 0x64, 0x00, 0x00/0x0c, 0x03, 0x00, 0x64, 0x64, 0x9a, 0x02/g' hw/ide/core.c  #ide sata 通电次数power cycle count改为666次 0x029a
 sed -i 's/"QEMU/"'${brand}'/g' hw/input/adb-kbd.c
 sed -i 's/"QEMU/"'${brand}'/g' hw/input/adb-mouse.c
 sed -i 's/"QEMU/"'${brand}'/g' hw/input/ads7846.c
@@ -77,8 +83,10 @@ sed -i 's/QEMU MPT Fusion/'${brand}' MPT Fusion/g' hw/scsi/mptconfig.c
 sed -i 's/"QEMU"/"'${brand}'"/g' hw/scsi/mptconfig.c
 sed -i 's/0000111122223333/1145141919810000/g' hw/scsi/mptconfig.c
 sed -i 's/"QEMU/"'${brand}'/g' hw/scsi/scsi-bus.c
+sed -i 's/qemu_hw_version()/"666"/g' hw/scsi/scsi-bus.c #scsi bus version 4字符大小
 sed -i 's/"QEMU/"'${brand}'/g' hw/scsi/megasas.c
 sed -i 's/"QEMU/"'${brand}'/g' hw/scsi/scsi-disk.c
+sed -i 's/qemu_hw_version()/"666"/g' hw/scsi/scsi-disk.c #scsi 固件version 5字符大小
 sed -i 's/"QEMU/"'${brand}'/g' hw/scsi/spapr_vscsi.c
 sed -i 's/"QEMU/"'${brand}'/g' hw/sd/sd.c
 sed -i 's/"QEMU/"'${brand}'/g' hw/ufs/lu.c
