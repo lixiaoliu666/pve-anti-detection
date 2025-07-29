@@ -140,4 +140,5 @@ sed -i 's/t->location = 0x01;/t->location = 0x03;/g' hw/smbios/smbios.c
 sed -i 's/t->error_correction = 0x06;/t->error_correction = 0x03;/g' hw/smbios/smbios.c
 sed -i 's/"QEMU TCG CPU version/"TCG CPU version/g' target/i386/cpu.c
 sed -i 's/"Microsoft Hv/"GenuineIntel/g' target/i386/cpu.c  #解决n卡vgpu驱动43问题
+sed -i 's/for (i = 0; i < nb_eeprom/eeprom_buf[0]=255;\neeprom_buf[1]=8;\neeprom_buf[2]=DDR2;\neeprom_buf[3]=13;\neeprom_buf[4]=10;\neeprom_buf[5]=4;\neeprom_buf[6]=64;\neeprom_buf[8]=4;\neeprom_buf[9]=0x25;\neeprom_buf[10]=1;\neeprom_buf[12]=0x82;\neeprom_buf[13]=8;\neeprom_buf[15]=0;\neeprom_buf[16]=12;\neeprom_buf[17]=4;\neeprom_buf[18]=12;\neeprom_buf[19]=0;\neeprom_buf[20]=2;\neeprom_buf[21]=0;\neeprom_buf[23]=0x12;\neeprom_buf[27]=20;\neeprom_buf[28]=15;\neeprom_buf[29]=20;\neeprom_buf[30]=45;\neeprom_buf[31]=0xff;\neeprom_buf[32]=20;\neeprom_buf[33]=8;\neeprom_buf[34]=20;\neeprom_buf[35]=8;\nfor(i=0;i<63;i++){\neeprom_buf[63]+=eeprom_buf[i];\n}\nfor (i = 0; i < nb_eeprom/g' hw/i2c/smbus_eeprom.c  #添加内存 默认spd信息 DDR2的
 echo "结束sed工作"
