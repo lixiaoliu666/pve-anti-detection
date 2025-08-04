@@ -1,5 +1,5 @@
 #!/bin/bash
-#适用于给pve-qemu-kvm9里面的qemu打补丁使用，只支持9版本(不支持kvm7和kvm8，再高没有测试)，直接放本脚本在qemu目录下，在make包之前在qemu目录运行一次本脚本就是，运行后你可以继续使用git工具生成qemu具体版本的patch文件
+#适用于给pve-qemu-kvm9里面的qemu打补丁使用，支持9 10版本(不支持kvm7和kvm8，再高没有测试)，直接放本脚本在qemu目录下，在make包之前在qemu目录运行一次本脚本就是，运行后你可以继续使用git工具生成qemu具体版本的patch文件
 #参考开源项目 https://github.com/zhaodice/proxmox-ve-anti-detection 编写，处理重复劳作
 #作者 李晓流 & 大大帅666 20240824出品 https://space.bilibili.com/565938745
 brand="DELL" #这里修改品牌，仅4个大写英文字母
@@ -130,12 +130,12 @@ sed -i 's/t->l2_cache_handle = cpu_to_le16(0xFFFF);/t->l2_cache_handle = cpu_to_
 sed -i 's/t->l3_cache_handle = cpu_to_le16(0xFFFF);/t->l3_cache_handle = cpu_to_le16(0x003B);/g' hw/smbios/smbios.c
 sed -i 's/t->processor_family = 0x01;/t->processor_family = 0xC6;/g' hw/smbios/smbios.c
 sed -i 's/t->processor_characteristics = cpu_to_le16(0x02);/t->processor_characteristics = cpu_to_le16(0x04);/g' hw/smbios/smbios.c
-sed -i 's/t->memory_type = 0x07;/t->memory_type = 0x1A;/g' hw/smbios/smbios.c
+sed -i 's/t->memory_type = 0x07;/t->memory_type = 0x18;/g' hw/smbios/smbios.c
 sed -i 's/t->total_width = cpu_to_le16(0xFFFF);/t->total_width = cpu_to_le16(64);/g' hw/smbios/smbios.c
 sed -i 's/t->data_width = cpu_to_le16(0xFFFF);/t->data_width = cpu_to_le16(64);/g' hw/smbios/smbios.c
-sed -i 's/t->minimum_voltage = cpu_to_le16(0);/t->minimum_voltage = cpu_to_le16(1200);/g' hw/smbios/smbios.c
-sed -i 's/t->maximum_voltage = cpu_to_le16(0);/t->maximum_voltage = cpu_to_le16(1350);/g' hw/smbios/smbios.c
-sed -i 's/t->configured_voltage = cpu_to_le16(0);/t->configured_voltage = cpu_to_le16(1200);/g' hw/smbios/smbios.c
+sed -i 's/t->minimum_voltage = cpu_to_le16(0);/t->minimum_voltage = cpu_to_le16(1350);/g' hw/smbios/smbios.c
+sed -i 's/t->maximum_voltage = cpu_to_le16(0);/t->maximum_voltage = cpu_to_le16(1500);/g' hw/smbios/smbios.c
+sed -i 's/t->configured_voltage = cpu_to_le16(0);/t->configured_voltage = cpu_to_le16(1350);/g' hw/smbios/smbios.c
 sed -i 's/t->location = 0x01;/t->location = 0x03;/g' hw/smbios/smbios.c
 sed -i 's/t->error_correction = 0x06;/t->error_correction = 0x03;/g' hw/smbios/smbios.c
 sed -i 's/"QEMU TCG CPU version/"TCG CPU version/g' target/i386/cpu.c
