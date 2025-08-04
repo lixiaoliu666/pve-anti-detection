@@ -1048,29 +1048,29 @@ static void smbios_build_type_17_table(unsigned instance, uint64_t size)
         t->size = cpu_to_le16(MAX_T17_STD_SZ);
         t->extended_size = cpu_to_le32(size_mb);
     }
-    t->form_factor = 0x09; /* DIMM */
+    t->form_factor = 0x0D; /* SODIMM */
     t->device_set = 0; /* Not in a set */
     snprintf(loc_str, sizeof(loc_str), "%s %d", type17.loc_pfx, instance);
-    SMBIOS_TABLE_SET_STR(17, device_locator_str, "Controller0-ChannelA-DIMM0");   //李晓流 dds666 modify 内存设备位置
+    SMBIOS_TABLE_SET_STR(17, device_locator_str, "ChannelA-DIMM0");   //李晓流 dds666 modify 内存设备位置
     SMBIOS_TABLE_SET_STR(17, bank_locator_str, "BANK 0");  //李晓流 dds666 modify 内存插槽位置
-    t->memory_type = 0x1A; /* DDR4 */  //李晓流 dds666 modify ddr4类型
+     t->memory_type = 0x18; /* DDR3 */  //李晓流 dds666 modify ddr3类型
     t->type_detail = cpu_to_le16(0x80); /* test 0x80*/ //李晓流 dds666 modify 0x80代表 Synchronous
-    t->speed = cpu_to_le16(3200); //李晓流 dds666 modify 3200mhz
-    SMBIOS_TABLE_SET_STR(17, manufacturer_str, "KINGSTON"); //李晓流 dds666 modify
+    t->speed = cpu_to_le16(1600); //李晓流 dds666 modify 1600mhz
+    SMBIOS_TABLE_SET_STR(17, manufacturer_str, "Kingston"); //李晓流 dds666 modify
 	
 	char memory_serial_number[11];
 	srand(time(NULL));
 	snprintf(memory_serial_number,sizeof(memory_serial_number),
-                 "DDS666%03d", rand()%1000);
+                  "3237%04d", rand()%10000);//2025xxxx
 
     SMBIOS_TABLE_SET_STR(17, serial_number_str, memory_serial_number); //李晓流 dds666 modify 
     SMBIOS_TABLE_SET_STR(17, asset_tag_number_str, memory_serial_number); //李晓流 dds666 modify 
-    SMBIOS_TABLE_SET_STR(17, part_number_str, memory_serial_number); //李晓流 dds666 modify 
-    t->attributes = 1; /* test 1 */ //李晓流 dds666 modify 1代表 记不得了，你要测一下
+    SMBIOS_TABLE_SET_STR(17, part_number_str, "KHX1600C9S3L/8G "); //李晓流 dds666 modify 
+    t->attributes = 0x02; /* test 1 */ //李晓流 dds666 modify 1代表 记不得了，你要测一下
     t->configured_clock_speed = t->speed; /* reuse value for max speed */
-    t->minimum_voltage = cpu_to_le16(1200); /* Unknown */ //李晓流 dds666 modify 1.2v
-    t->maximum_voltage = cpu_to_le16(1350); /* Unknown */ //李晓流 dds666 modify  1.35v
-    t->configured_voltage = cpu_to_le16(1200); /* Unknown */ //李晓流 dds666 modify 1.2v
+    t->minimum_voltage = cpu_to_le16(1350); /* Unknown */ //李晓流 dds666 modify 1.35v
+    t->maximum_voltage = cpu_to_le16(1500); /* Unknown */ //李晓流 dds666 modify  1.5v
+    t->configured_voltage = cpu_to_le16(1350); /* Unknown */ //李晓流 dds666 modify 1.35v
 
     SMBIOS_BUILD_TABLE_POST;
 }
@@ -1200,8 +1200,8 @@ void smbios_set_defaults(const char *manufacturer, const char *product,
     SMBIOS_SET_DEFAULT(type4.sock_pfx, "CPU");
     SMBIOS_SET_DEFAULT(type4.manufacturer, "Intel(R) Corporation"); //李晓流 dds666 modify
     SMBIOS_SET_DEFAULT(type4.version, "12th Gen Intel(R) Core(TM) i7-12700"); //李晓流 dds666 modify
-    SMBIOS_SET_DEFAULT(type17.loc_pfx, "DIMM");
-    SMBIOS_SET_DEFAULT(type17.manufacturer, "KINGSTON"); //李晓流 dds666 modify
+    SMBIOS_SET_DEFAULT(type17.loc_pfx, "SO-DIMM");
+    SMBIOS_SET_DEFAULT(type17.manufacturer, "Kingston"); //李晓流 dds666 modify
 	
 }
 
