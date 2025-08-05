@@ -8,6 +8,8 @@ qq群聊天 25438194 进群暗号 666
 
 大大帅666 b站地址 https://space.bilibili.com/14205798
 
+20250805更新：增加acpi添加ssdt功能，里有个虚拟电池（可显示）、虚拟cpu和主板温度（可显示）、虚拟风扇（无法显示），你可以使用https://github.com/ic005k/Xiasl 直接对ssdt.aml（ssdt.aml==ssdt.dat 后缀名区别而已）进行自我编辑增加修改功能
+
 20250725更新:实现了无序三件套效果（只需要重启一下虚拟机就自动变化）：内存序列号随机，ide和sata硬盘序列号和固件号随机，主板型号随机。
 
 本想把 李晓流 & 大大帅666 作品 LOGO.jpg 这个图标搞进pve虚拟机启动画面的，pve的kvm和ovmf分别是两个包不是同一个包，要编译ovmf包才能实现开机画面，现在通过ovmf包实现了。
@@ -26,11 +28,13 @@ pve网页 数据中心-》选项-》MAC地址前缀你先改成D8:FC:93
 
 2、正式开始
 
-请把2个包
+请把2个包和1个文件
 
 pve-qemu-kvm_9.xxx_amd64.deb  本项目下载  xxx代表你具体下载的版本
 
 pve-edk2-firmware-ovmf_xxx.deb 本项目下载 ，也可以这个项目进行下载 https://github.com/lixiaoliu666/pve-anti-detection-edk2-firmware-ovmf
+
+ssdt.aml
 
 请用winscp 上传到/root目录下
 
@@ -82,7 +86,7 @@ nano /etc/pve/qemu-server/100.conf
 
 我的完整虚拟机配置如下(适用于qemu 9版本，qemu 7和qemu 8请看补充):
 
-args: -cpu host,hypervisor=off,vmware-cpuid-freq=false,enforce=false,host-phys-bits=true -smbios type=0 -smbios type=9 -smbios type=8 -smbios type=8
+args: -acpitable file=/root/ssdt.aml -cpu host,hypervisor=off,vmware-cpuid-freq=false,enforce=false,host-phys-bits=true -smbios type=0 -smbios type=9 -smbios type=8 -smbios type=8
 
 balloon: 0
 
@@ -130,7 +134,7 @@ vmgenid: 2271babc-cafc-4c68-be8b-2bb3157c9924
 
 如果是qemu 7和8，需要使用下面的args
 
-args: -cpu host,hypervisor=off,vmware-cpuid-freq=false,enforce=false,host-phys-bits=true -smbios type=0,vendor="American Megatrends International LLC.",version=H3.7G,date='02/21/2023',release=3.7 -smbios type=1,manufacturer="Maxsun",product="MS-Terminator B760M",version="VER:H3.7G(2022/11/29)",serial="Default string",sku="Default string",family="Default string" -smbios type=2,manufacturer="Maxsun",product="MS-Terminator B760M",version="VER:H3.7G(2022/11/29)",serial="Default string",asset="Default string",location="Default string" -smbios type=3,manufacturer="Default string",version="Default string",serial="Default string",asset="Default string",sku="Default string" -smbios type=17,loc_pfx="Controller0-ChannelA-DIMM",manufacturer="KINGSTON",speed=3200,serial=DF1EC466,part="SED3200U1888S",bank="BANK 0",asset="9876543210" -smbios type=4,sock_pfx="LGA1700",manufacturer="Intel(R) Corporation",version="12th Gen Intel(R) Core(TM) i7-12700",max-speed=4900,current-speed=3800,serial="To Be Filled By O.E.M.",asset="To Be Filled By O.E.M.",part="To Be Filled By O.E.M." -smbios type=8,internal_reference="CPU FAN",external_reference="Not Specified",connector_type=0xFF,port_type=0xFF -smbios type=8,internal_reference="J3C1 - GMCH FAN",external_reference="Not Specified",connector_type=0xFF,port_type=0xFF -smbios type=8,internal_reference="J2F1 - LAI FAN",external_reference="Not Specified",connector_type=0xFF,port_type=0xFF -smbios type=11,value="Default string"
+args: -acpitable file=/root/ssdt.aml -cpu host,hypervisor=off,vmware-cpuid-freq=false,enforce=false,host-phys-bits=true -smbios type=0,vendor="American Megatrends International LLC.",version=H3.7G,date='02/21/2023',release=3.7 -smbios type=1,manufacturer="Maxsun",product="MS-Terminator B760M",version="VER:H3.7G(2022/11/29)",serial="Default string",sku="Default string",family="Default string" -smbios type=2,manufacturer="Maxsun",product="MS-Terminator B760M",version="VER:H3.7G(2022/11/29)",serial="Default string",asset="Default string",location="Default string" -smbios type=3,manufacturer="Default string",version="Default string",serial="Default string",asset="Default string",sku="Default string" -smbios type=17,loc_pfx="Controller0-ChannelA-DIMM",manufacturer="KINGSTON",speed=3200,serial=DF1EC466,part="SED3200U1888S",bank="BANK 0",asset="9876543210" -smbios type=4,sock_pfx="LGA1700",manufacturer="Intel(R) Corporation",version="12th Gen Intel(R) Core(TM) i7-12700",max-speed=4900,current-speed=3800,serial="To Be Filled By O.E.M.",asset="To Be Filled By O.E.M.",part="To Be Filled By O.E.M." -smbios type=8,internal_reference="CPU FAN",external_reference="Not Specified",connector_type=0xFF,port_type=0xFF -smbios type=8,internal_reference="J3C1 - GMCH FAN",external_reference="Not Specified",connector_type=0xFF,port_type=0xFF -smbios type=8,internal_reference="J2F1 - LAI FAN",external_reference="Not Specified",connector_type=0xFF,port_type=0xFF -smbios type=11,value="Default string"
 
 6、其他内容详见本项目tools目录，里面有目前过不了的检测说明.txt，虚拟机检测工具.rar，还有高级检测软件。高级检测还得是al-khaser和pafish64.exe检测软件。pafish和al-khaser是虚拟机环境检测的两个金标准。
 
@@ -143,3 +147,4 @@ https://www.bilibili.com/read/readlist/rl758108 pve反虚拟化检测玩游戏
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=lixiaoliu666/pve-anti-detection&type=Date)](https://www.star-history.com/#lixiaoliu666/pve-anti-detection&Date)
+
