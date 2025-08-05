@@ -21,7 +21,7 @@
 #include "qemu/config-file.h"
 #include "qemu/module.h"
 #include "qemu/option.h"
-#include "sysemu/sysemu.h"
+#include "system/system.h"
 #include "qemu/uuid.h"
 #include "hw/firmware/smbios.h"
 #include "hw/loader.h"
@@ -689,7 +689,7 @@ static void smbios_build_type_37_table(void)
     SMBIOS_BUILD_TABLE_POST;
 }
 
-/* SMBIOS type 29 ElectricalCurrentProbe （这个没有写完） 李晓流 dds666 added*/
+/* SMBIOS type 29 ElectricalCurrentProbe （电流探头 这个没有写完） 李晓流 dds666 added*/
 //https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf 请使用这个规范文件System Management BIOS (SMBIOS) Reference Specification设置type 29 内部参数信息
 static void smbios_build_type_29_table(void)
 {
@@ -698,7 +698,7 @@ static void smbios_build_type_29_table(void)
     SMBIOS_BUILD_TABLE_POST;
 }
 
-/* SMBIOS type 39 SystemPowerSupply （这个没有写完） 李晓流 dds666 added*/
+/* SMBIOS type 39 SystemPowerSupply （供电 这个没有写完） 李晓流 dds666 added*/
 //https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf 请使用这个规范文件System Management BIOS (SMBIOS) Reference Specification设置type 39 内部参数信息
 static void smbios_build_type_39_table(void)
 {
@@ -707,7 +707,7 @@ static void smbios_build_type_39_table(void)
     SMBIOS_BUILD_TABLE_POST;
 }
 
-/* SMBIOS type 22 PortableBattery （这个没有写完） 李晓流 dds666 added*/
+/* SMBIOS type 22 PortableBattery （电池 这个没有写完） 李晓流 dds666 added*/
 //https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf 请使用这个规范文件System Management BIOS (SMBIOS) Reference Specification设置type 22 内部参数信息
 static void smbios_build_type_22_table(void)
 {
@@ -1359,34 +1359,34 @@ static bool smbios_get_tables_ep(MachineState *ms,
 	//(unsigned instance,const char *description,uint8_t location_and_status)t->location_and_status=0x6A; 
 	//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf 请使用这个规范文件System Management BIOS (SMBIOS) Reference Specification设置type 26 内部参数信息
 	smbios_build_type_26_table(0,"LM78A",0x6A);//李晓流 dds666 added
-	smbios_build_type_26_table(1,"LM78A",0x67);//李晓流 dds666 added
-	smbios_build_type_26_table(2,"dds666",0x63);//李晓流 dds666 added
-	smbios_build_type_26_table(3,"dds666",0x64);//李晓流 dds666 added
-	smbios_build_type_26_table(4,"lixiaoliu",0x63);//李晓流 dds666 added
-	smbios_build_type_26_table(5,"lixiaoliu",0x64);//李晓流 dds666 added
-	smbios_build_type_26_table(6,"lixiaoliu",0x6A);//李晓流 dds666 added
-	smbios_build_type_26_table(7,"lixiaoliu",0x67);//李晓流 dds666 added
+	smbios_build_type_26_table(1,"LM78A-1",0x67);//李晓流 dds666 added
+	smbios_build_type_26_table(2,"dds666VOL-2",0x63);//李晓流 dds666 added
+	smbios_build_type_26_table(3,"dds666VOL-3",0x64);//李晓流 dds666 added
+	smbios_build_type_26_table(4,"lixiaoliuVOL-4",0x63);//李晓流 dds666 added
+	smbios_build_type_26_table(5,"lixiaoliuVOL-5",0x64);//李晓流 dds666 added
+	smbios_build_type_26_table(6,"lixiaoliuVOL-6",0x6A);//李晓流 dds666 added
+	smbios_build_type_26_table(7,"lixiaoliuVOL-7",0x67);//李晓流 dds666 added
 
 	//李晓流 dds666 added CoolingDevice 
 	//(unsigned instance,const char *description,uint8_t device_type_and_status) t->device_type_and_status = 0x67; //Power Supply Fan |  Ok   0x67=b01100111
 	//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf 请使用这个规范文件System Management BIOS (SMBIOS) Reference Specification设置type 27 内部参数信息
 	smbios_build_type_27_table(0,"CPU FAN",0x67);//李晓流 dds666 added
-	smbios_build_type_27_table(1,"dds666",0x65);//李晓流 dds666 added
-	smbios_build_type_27_table(2,"dds666",0x63);//李晓流 dds666 added
-	smbios_build_type_27_table(3,"lixiaoliu",0x65);//李晓流 dds666 added
-	smbios_build_type_27_table(4,"lixiaoliu",0x63);//李晓流 dds666 added
-	smbios_build_type_27_table(5,"lixiaoliu",0x67);//李晓流 dds666 added
+	smbios_build_type_27_table(1,"dds666FAN-1",0x65);//李晓流 dds666 added
+	smbios_build_type_27_table(2,"dds666FAN-2",0x63);//李晓流 dds666 added
+	smbios_build_type_27_table(3,"lixiaoliuFAN-3",0x65);//李晓流 dds666 added
+	smbios_build_type_27_table(4,"lixiaoliuFAN-4",0x63);//李晓流 dds666 added
+	smbios_build_type_27_table(5,"lixiaoliuFAN-5",0x67);//李晓流 dds666 added
 
 	//李晓流 dds666 added TemperatureProbe 
 	//unsigned instance,const char *description,uint8_t location_and_status) t->location_and_status=0x6A;
 	//https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf 请使用这个规范文件System Management BIOS (SMBIOS) Reference Specification设置type 28 内部参数信息
-	smbios_build_type_28_table(0,"LM78A",0x63);//李晓流 dds666 added
-	smbios_build_type_28_table(1,"LM78A",0x6A);//李晓流 dds666 added
-	smbios_build_type_28_table(2,"dds666",0x67);//李晓流 dds666 added
-	smbios_build_type_28_table(3,"lixiaoliu",0x67);//李晓流 dds666 added
-	smbios_build_type_28_table(4,"lixiaoliu",0x69);//李晓流 dds666 added
-	smbios_build_type_28_table(5,"lixiaoliu",0x63);//李晓流 dds666 added
-	smbios_build_type_28_table(6,"lixiaoliu",0x6A);//李晓流 dds666 added
+	smbios_build_type_28_table(0,"LM78A",0x63);//李晓流 dds666 added 0x3=cpu
+	smbios_build_type_28_table(1,"LM78A-1",0x67);//李晓流 dds666 added 0x7=motherboard
+	smbios_build_type_28_table(2,"dds666TEMP-2",0x64);//李晓流 dds666 added 0x4=disk
+	smbios_build_type_28_table(3,"lixiaoliuTEMP-3",0x68);//李晓流 dds666 added 0x8=memory
+	smbios_build_type_28_table(4,"lixiaoliuTEMP-4",0x69);//李晓流 dds666 added
+	smbios_build_type_28_table(5,"lixiaoliuTEMP-5",0x66);//李晓流 dds666 added
+	smbios_build_type_28_table(6,"lixiaoliuTEMP-6",0x61);//李晓流 dds666 added
 	smbios_build_type_29_table();//李晓流 dds666 added ElectricalCurrentProbe
 
 
@@ -1802,5 +1802,4 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
 
     error_setg(errp, "Must specify type= or file=");
 }
-
 
