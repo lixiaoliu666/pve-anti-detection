@@ -32,6 +32,7 @@ jobs:
           mkdir -p artifacts
           find ./ -name "*.deb" -exec cp {} ./artifacts/ \;
           find ./ -name "*autoGenPatch.patch" -exec cp {} ./artifacts/ \;
+          find ./ -name "*.aml" -exec cp {} ./artifacts/ \;
           
 
       # Step 4: 上传工件
