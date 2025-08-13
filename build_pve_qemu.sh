@@ -8,10 +8,10 @@ cd pve-qemu
 git reset --hard 245689b9ae4120994de29b71595ea58abac06f3c
 apt install devscripts -y
 mk-build-deps --install
-make
-make clean
+git submodule update --init --recursive
 cp ../sedPatch-pve-qemu-kvm7-8-anti-dection.sh qemu/
 cd qemu
+meson subprojects download
 chmod +x sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 bash sedPatch-pve-qemu-kvm7-8-anti-dection.sh
 cp ../../smbios.h include/hw/firmware/smbios.h
@@ -21,9 +21,7 @@ sed -i 's/return -1;/return 8;/g' hw/vfio/igd.c
 git diff > qemu-autoGenPatch.patch
 cp qemu-autoGenPatch.patch ../
 cd ..
-apt install devscripts -y
-mk-build-deps --install
-make
+make #改为一次编译
 cd qemu/
 git checkout .
 cd ..
