@@ -36,6 +36,7 @@ cp qemu-autoGenPatch.patch ../
 ./configure --target-list=x86_64-softmmu --enable-kvm
 make clean
 make #改为一次编译
+strip --strip-unneeded build/qemu-system-x86_64  #减少大小
 cp build/qemu-system-x86_64 ../
 cp pc-bios/bios*.bin ../
 cp pc-bios/vgabios-s*.bin ../
