@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     permissions: write-all
-    container: ghcr.io/lixiaoliu666/pve9docker:main
+    container: ghcr.io/lixiaoliu666/pve8docker:main
     env:
       TZ: Asia/Shanghai
     steps:
