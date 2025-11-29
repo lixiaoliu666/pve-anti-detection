@@ -822,7 +822,7 @@ static void smbios_build_type_3_table(void)
     SMBIOS_BUILD_TABLE_PRE(3, T3_BASE, true); /* required */
 
     SMBIOS_TABLE_SET_STR(3, manufacturer_str, type3.manufacturer);
-    t->type = 0x03; /* Desktop */
+    t->type = 0xA; /* Notebook */
     SMBIOS_TABLE_SET_STR(3, version_str, type3.version);
     SMBIOS_TABLE_SET_STR(3, serial_number_str, type3.serial);
     SMBIOS_TABLE_SET_STR(3, asset_tag_number_str, type3.asset);
