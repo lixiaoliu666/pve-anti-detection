@@ -6,7 +6,6 @@ PVE Debain Ubuntu ArchLinux virtual machine emulates a physical machine to avoid
 
 **Authors:** Li Xiaoliu & DadaShuai666
 
-Chat QQ Groups `363074875` with entry codes `666`
 
 - **Li Xiaolius Bilibili:** [https://space.bilibili.com/565938745](https://space.bilibili.com/565938745)
 - **DadaShuai666s Bilibili:** [https://space.bilibili.com/14205798](https://space.bilibili.com/14205798)
