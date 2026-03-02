@@ -2,13 +2,7 @@ Language [<a href="README.md">中文</a>] | [<a href="README.en.MD">English</a>]
 
 PVE Debain Ubuntu ArchLinux virtual machine emulates a physical machine to avoid(or anti) detection
 
-# Li Xiaoliu & DadaShuai666 Project
-
-**Authors:** Li Xiaoliu & DadaShuai666
-
-
-- **Li Xiaolius Bilibili:** [https://space.bilibili.com/565938745](https://space.bilibili.com/565938745)
-- **DadaShuai666s Bilibili:** [https://space.bilibili.com/14205798](https://space.bilibili.com/14205798)
+# Li Xiaoliu666 Project
 
 ## Overview
 
