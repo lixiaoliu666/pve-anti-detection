@@ -1,7 +1,7 @@
 #!/bin/bash
 #适用于给pve-qemu-kvm9里面的qemu打补丁使用，支持9 10版本(不支持kvm7和kvm8，再高没有测试)，直接放本脚本在qemu目录下，在make包之前在qemu目录运行一次本脚本就是，运行后你可以继续使用git工具生成qemu具体版本的patch文件
 #参考开源项目 https://github.com/zhaodice/proxmox-ve-anti-detection 编写，处理重复劳作
-#作者 李晓流 & 大大帅666 20240824出品 https://space.bilibili.com/565938745
+#作者 李晓流
 brand="DELL" #这里修改品牌，仅4个大写英文字母
 echo "开始sed工作"
 sed -i 's/QEMU v" QEMU_VERSION/'${brand}' v" QEMU_VERSION/g' block/vhdx.c
