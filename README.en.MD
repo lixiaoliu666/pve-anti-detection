@@ -1,12 +1,8 @@
 Language [<a href="README.md">中文</a>] | [<a href="README.en.MD">English</a>] Thanks for https://github.com/mk990 translate.
 
-PVE Debain Ubuntu ArchLinux virtual machine emulates a physical machine to avoid(or anti) detection
-
-# Li Xiaoliu666 Project
+PVE Debain Ubuntu ArchLinux virtual machine emulates a physical machine
 
 ## Overview
-
-For reference, you can check out my previous article: [https://www.bilibili.com/read/cv26245305](https://www.bilibili.com/read/cv26245305)
 
 ## 1. Preparation
 
@@ -36,8 +32,6 @@ Download the following packages and file:
 
 Upload them to `/root` using **WinSCP**.
 
-If you need advanced kernel compilation, refer to my article on compiling and loading PVE Linux kernel modules:\
-[https://www.bilibili.com/read/cv37772880/](https://www.bilibili.com/read/cv37772880/)
 
 ### Check Installed KVM Version
 
@@ -141,10 +135,6 @@ args: -acpitable file=/root/ssdt.aml -cpu host,host-cache-info=on,hypervisor=off
   - **Basic:** [Virtual Machine Detection Tool]
   - **Advanced:** [`pafish64.exe`](#) and [`al-khaser`](#) are the gold standards for VM detection.
 
-## 5. Further Reading
-
-This project is open-source. All content outside of proprietary parts will be fully disclosed in the series:\
-🔗 [PVE Anti-Virtualization Detection for Gaming](https://www.bilibili.com/read/readlist/rl758108)
 
 We welcome forks and further experimentation!
 ## Star History
