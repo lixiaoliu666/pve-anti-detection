@@ -322,7 +322,7 @@ struct smbios_type_41 {
 } QEMU_PACKED;
 
 
-/* SMBIOS type 7 CacheInformation CPU������Ϣ 123��cpu���� ������ dds666 added */
+/* SMBIOS type 7 CacheInformation CPU AICodo added */
 //https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ��ʹ������淶�ļ�System Management BIOS (SMBIOS) Reference Specification����type 7 �ڲ�������Ϣ
 struct smbios_type_7 {
     struct smbios_structure_header header;
@@ -338,7 +338,7 @@ struct smbios_type_7 {
 	uint8_t associativity;
 } QEMU_PACKED;
 
-/* SMBIOS type 20 MemoryDeviceMappedAddress �ڴ��豸ӳ���ַ��Ϣ ������ dds666 added */
+/* SMBIOS type 20 MemoryDeviceMappedAddress AICodo added */
 //https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ��ʹ������淶�ļ�System Management BIOS (SMBIOS) Reference Specification����type 20 �ڲ�������Ϣ
 struct smbios_type_20 {
     struct smbios_structure_header header;
@@ -351,7 +351,7 @@ struct smbios_type_20 {
 	uint8_t interleave_data_depth;
 } QEMU_PACKED;
 
-/* SMBIOS type 26 VoltageProbe ��ѹ�������豸��Ϣ ������ dds666 added*/
+/* SMBIOS type 26 VoltageProbe  AICodo added*/
 //https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ��ʹ������淶�ļ�System Management BIOS (SMBIOS) Reference Specification����type 26 �ڲ�������Ϣ
 struct smbios_type_26 {
     struct smbios_structure_header header;
@@ -367,7 +367,7 @@ struct smbios_type_26 {
 	
 } QEMU_PACKED;
 
-/* SMBIOS type 27 CoolingDevice �����豸��Ϣ ������ dds666 added*/
+/* SMBIOS type 27 CoolingDevice  AICodo added*/
 //https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ��ʹ������淶�ļ�System Management BIOS (SMBIOS) Reference Specification����type 27 �ڲ�������Ϣ
 struct smbios_type_27 {
     struct smbios_structure_header header;
@@ -379,7 +379,7 @@ struct smbios_type_27 {
 	uint8_t description;
 } QEMU_PACKED;
 
-/* SMBIOS type 28 TemperatureProbe �¶��豸��Ϣ ������ dds666 added*/
+/* SMBIOS type 28 TemperatureProbe  AICodo added*/
 //https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ��ʹ������淶�ļ�System Management BIOS (SMBIOS) Reference Specification����type 28 �ڲ�������Ϣ
 struct smbios_type_28 {
     struct smbios_structure_header header;
@@ -395,27 +395,27 @@ struct smbios_type_28 {
 } QEMU_PACKED;
 
 
-/* SMBIOS type 37 MemoryChannel �ڴ�ͨ����Ϣ�����û��д�꣩ ������ dds666 added*/
+/* SMBIOS type 37 MemoryChannel AICodo added*/
 //https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ��ʹ������淶�ļ�System Management BIOS (SMBIOS) Reference Specification����type 37 �ڲ�������Ϣ
 struct smbios_type_37 {
     struct smbios_structure_header header;
 } QEMU_PACKED;
 
-/* SMBIOS type 29 ElectricalCurrentProbe �����û��д�꣩ ������ dds666 added*/
+/* SMBIOS type 29 ElectricalCurrentProbe AICodo added*/
 //https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ��ʹ������淶�ļ�System Management BIOS (SMBIOS) Reference Specification����type 29 �ڲ�������Ϣ
 struct smbios_type_29 {
     struct smbios_structure_header header;
 	uint8_t description;
 } QEMU_PACKED;
 
-/* SMBIOS type 39 SystemPowerSupply �����û��д�꣩ ������ dds666 added*/
+/* SMBIOS type 39 SystemPowerSupply  AICodo added*/
 //https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ��ʹ������淶�ļ�System Management BIOS (SMBIOS) Reference Specification����type 39 �ڲ�������Ϣ
 struct smbios_type_39 {
     struct smbios_structure_header header;
 	uint8_t device_name;
 } QEMU_PACKED;
 
-/* SMBIOS type 22 PortableBattery �����û��д�꣩ ������ dds666 added*/
+/* SMBIOS type 22 PortableBattery  AICodo added*/
 //https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0WIP50.pdf ��ʹ������淶�ļ�System Management BIOS (SMBIOS) Reference Specification����type 22 �ڲ�������Ϣ
 struct smbios_type_22 {
     struct smbios_structure_header header;
