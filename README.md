@@ -28,7 +28,7 @@ pve网页 数据中心-》选项-》MAC地址前缀你先改成D8:FC:93
 
 pve-qemu-kvm_10.xxx_amd64.deb  本项目下载  xxx代表你具体下载的版本
 
-pve-edk2-firmware-ovmf_xxx.deb 本项目下载 ，也可以这个项目进行下载 https://github.com/lixiaoliu666/pve-anti-detection-edk2-firmware-ovmf
+pve-edk2-firmware-ovmf_xxx.deb 本项目下载 ，也可以这个项目进行下载 https://github.com/AICodo/pve-anti-detection-edk2-firmware-ovmf
 
 ssdt.aml
 
@@ -136,7 +136,8 @@ args: -acpitable file=/root/ssdt.aml -cpu host,host-cache-info=on,hypervisor=off
 本项目抛砖引玉，欢迎fork本项目后自我继续折腾！！！
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=lixiaoliu666/pve-anti-detection&type=Date)](https://www.star-history.com/#lixiaoliu666/pve-anti-detection&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=AICodo/pve-anti-detection&type=Date)](https://www.star-history.com/#AICodo/pve-anti-detection&Date)
+
 
 
 
