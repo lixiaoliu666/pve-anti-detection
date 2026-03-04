@@ -68,7 +68,7 @@ jobs:
           tag_name: ${{ format('v{0}-pve9', steps.current-time.outputs.formattedTime) }}
           release_name: ${{ format('v10.x build-{0} for pve9', steps.current-time.outputs.formattedTime) }}
           body: |
-            build pve qemu deb form v7.0.0-1 to v10.x. ovmf deb you can download from https://github.com/lixiaoliu666/pve-anti-detection-edk2-firmware-ovmf
+            build pve qemu deb form v7.0.0-1 to v10.x. ovmf deb you can download from https://github.com/aicodo/pve-anti-detection-edk2-firmware-ovmf
           draft: false
           prerelease: false
         env:
