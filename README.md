@@ -1,8 +1,7 @@
 Language [<a href="README.md">中文</a>] | [<a href="README.en.MD">English</a>] Thanks for https://github.com/mk990 translate。
 
-PVE Debain Ubuntu ArchLinux virtual machine emulates a physical machine to avoid(or anti) detection（pve Debian Ubuntu ArchLinux虚拟机模拟真实机器防检测）
+PVE Debain Ubuntu ArchLinux virtual machine emulates a physical machine （pve Debian Ubuntu ArchLinux虚拟机模拟真实机器）
 
-lixiaoliu666 作品
 
 20060228更新：发布10.1.2-7_amd64_Strong can dynamically display CPU information such as temperature, MHz, voltage, and power consumption in a Windows VM.Use cpu-z,hwinfo,hwmoniter.cpu传感器穿透到虚拟机显示。
 
@@ -12,7 +11,6 @@ lixiaoliu666 作品
 
 20250725更新：实现了无序三件套效果（只需要重启一下虚拟机就自动变化）：内存序列号随机，ide和sata硬盘序列号和固件号随机，主板型号随机
 
-可以参考以前我发布的这个文章：https://www.bilibili.com/read/cv26245305 该文章抛砖引玉而已
 
 1、前期准备工作：
 
@@ -22,7 +20,7 @@ pve网页 数据中心-》选项-》MAC地址前缀你先改成D8:FC:93
 
 ！！！！！！！！！！！本项目都不对scsi以及virtio设备有使用限制！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 
-我也在b站这个专栏发布全部的源码和教程如何编译源码，是整个系列的发布： https://www.bilibili.com/read/readlist/rl758108 pve虚拟机模拟真实机器防检测
+
 
 2、正式开始
 
@@ -36,7 +34,6 @@ ssdt.aml
 
 这3个请用winscp 上传到/root目录下
 
-如果你要高级的比如内核编译加东西，参考关于内核模块怎么单独编译并立马使用生效请参考我的这篇文章 https://www.bilibili.com/read/cv37772880/ 单独编译pve linux内核模块（比如kvm）加载到当前内核中立马使用生效
 
 3、查询目前安装的kvm包版本命令
 
@@ -135,15 +132,12 @@ args: -acpitable file=/root/ssdt.aml -cpu host,host-cache-info=on,hypervisor=off
 
 6、其他内容详见本项目tools目录，里面有目前过不了的检测说明.txt，虚拟机检测工具.rar，还有高级检测软件。高级检测还得是al-khaser和pafish64.exe检测软件。pafish和al-khaser是虚拟机环境检测的两个金标准。
 
-7、https://www.bilibili.com/read/cv26245305 
-
-该文章中开源内容外的内容全部开源，将在这个系列全部公布: 
-https://www.bilibili.com/read/readlist/rl758108 pve虚拟机模拟真实机器防检测
 
 本项目抛砖引玉，欢迎fork本项目后自我继续折腾！！！
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=lixiaoliu666/pve-anti-detection&type=Date)](https://www.star-history.com/#lixiaoliu666/pve-anti-detection&Date)
+
 
 
 
