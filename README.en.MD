@@ -16,9 +16,6 @@ PVE Debain Ubuntu ArchLinux virtual machine emulates a physical machine
 
 🚨 **No restrictions on SCSI or Virtio devices in this project!** 🚨
 
-3. **Source Code and Tutorials**\
-   The complete source code and tutorial series are available in my Bilibili column:\
-   [PVE Anti-Virtualization Detection for Gaming](https://www.bilibili.com/read/readlist/rl758108)
 
 ## 2. Installation
 
