@@ -28,7 +28,7 @@ pve网页 数据中心-》选项-》MAC地址前缀你先改成D8:FC:93
 
 pve-qemu-kvm_10.xxx_amd64.deb  本项目下载  xxx代表你具体下载的版本
 
-pve-edk2-firmware-ovmf_xxx.deb 本项目下载 ，也可以这个项目进行下载 https://github.com/AICodo/pve-anti-detection-edk2-firmware-ovmf
+pve-edk2-firmware-ovmf_xxx.deb 本项目下载 ，也可以这个项目进行下载 https://github.com/AICodo/pve-emu-realpc_edk2-firmware-ovmf
 
 ssdt.aml
 
@@ -130,13 +130,14 @@ vmgenid: 2271babc-cafc-4c68-be8b-2bb3157c9924
 
 args: -acpitable file=/root/ssdt.aml -cpu host,host-cache-info=on,hypervisor=off,vmware-cpuid-freq=false,enforce=false,host-phys-bits=true -smbios type=0,vendor="American Megatrends International LLC.",version=H3.7G,date='02/21/2023',release=3.7 -smbios type=1,manufacturer="Maxsun",product="MS-Terminator B760M",version="VER:H3.7G(2022/11/29)",serial="Default string",sku="Default string",family="Default string" -smbios type=2,manufacturer="Maxsun",product="MS-Terminator B760M",version="VER:H3.7G(2022/11/29)",serial="Default string",asset="Default string",location="Default string" -smbios type=3,manufacturer="Default string",version="Default string",serial="Default string",asset="Default string",sku="Default string" -smbios type=17,loc_pfx="Controller0-ChannelA-DIMM",manufacturer="KINGSTON",speed=3200,serial=DF1EC466,part="SED3200U1888S",bank="BANK 0",asset="9876543210" -smbios type=4,sock_pfx="LGA1700",manufacturer="Intel(R) Corporation",version="12th Gen Intel(R) Core(TM) i7-12700",max-speed=4900,current-speed=3800,serial="To Be Filled By O.E.M.",asset="To Be Filled By O.E.M.",part="To Be Filled By O.E.M." -smbios type=8,internal_reference="CPU FAN",external_reference="Not Specified",connector_type=0xFF,port_type=0xFF -smbios type=8,internal_reference="J3C1 - GMCH FAN",external_reference="Not Specified",connector_type=0xFF,port_type=0xFF -smbios type=8,internal_reference="J2F1 - LAI FAN",external_reference="Not Specified",connector_type=0xFF,port_type=0xFF -smbios type=11,value="Default string"
 
-6、其他内容详见本项目tools目录，里面有目前过不了的检测说明.txt，虚拟机检测工具.rar，还有高级检测软件。高级检测还得是al-khaser和pafish64.exe检测软件。pafish和al-khaser是虚拟机环境检测的两个金标准。
+6、其他内容详见本项目tools目录，虚拟机检测工具.rar，还有高级检测软件。高级检测还得是al-khaser和pafish64.exe检测软件。pafish和al-khaser是虚拟机环境检测的两个金标准。
 
 
 本项目抛砖引玉，欢迎fork本项目后自我继续折腾！！！
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=AICodo/pve-anti-detection&type=Date)](https://www.star-history.com/#AICodo/pve-anti-detection&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=AICodo/pve-emu-realpc&type=Date)](https://www.star-history.com/#AICodo/pve-emu-realpc&Date)
+
 
 
 
