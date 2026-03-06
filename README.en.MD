@@ -24,7 +24,7 @@ PVE Debain Ubuntu ArchLinux virtual machine emulates a physical machine
 Download the following packages and file:
 
 - `pve-qemu-kvm_10.xxx_amd64.deb` (Replace `xxx` with the specific version you downloaded)
-- `pve-edk2-firmware-ovmf_xxx.deb` you can also download from https://github.com/AICodo/pve-anti-detection-edk2-firmware-ovmf
+- `pve-edk2-firmware-ovmf_xxx.deb` you can also download from https://github.com/AICodo/pve-emu-realpc_edk2-firmware-ovmf
 - `ssdt.aml` ssdt.aml==ssdt.dat you can edit ssdt.aml with https://github.com/ic005k/Xiasl
 
 Upload them to `/root` using **WinSCP**.
@@ -128,7 +128,6 @@ args: -acpitable file=/root/ssdt.aml -cpu host,host-cache-info=on,hypervisor=off
 
 - **For detection bypassing tools in the tools directory** 
   - **Recommended Detection Tools:**
-  - **Something:** `Currently Undetected Checks.txt` 
   - **Basic:** [Virtual Machine Detection Tool]
   - **Advanced:** [`pafish64.exe`](#) and [`al-khaser`](#) are the gold standards for VM detection.
 
@@ -136,4 +135,4 @@ args: -acpitable file=/root/ssdt.aml -cpu host,host-cache-info=on,hypervisor=off
 We welcome forks and further experimentation!
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=AICodo/pve-anti-detection&type=Date)](https://www.star-history.com/#AICodo/pve-anti-detection&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=AICodo/pve-emu-realpc&type=Date)](https://www.star-history.com/#AICodo/pve-emu-realpc&Date)
