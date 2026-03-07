@@ -4,6 +4,13 @@ PVE Debain Ubuntu ArchLinux virtual machine emulates a physical machine （pve D
 
 
 20060228更新：发布10.1.2-7_amd64_Strong can dynamically display CPU information such as temperature, MHz, voltage, and power consumption in a Windows VM.Use cpu-z,hwinfo,hwmoniter.cpu传感器穿透到虚拟机显示。
+Intel CPU传感器穿透效果演示视频
+
+https://github.com/user-attachments/assets/cf95f3a1-9f47-46a1-94e5-cd68c5f5881c
+
+AMD CPU传感器穿透效果演示视频
+
+https://github.com/user-attachments/assets/69a922ea-df2c-4d13-94cc-d40736336b2e
 
 20250906更新：已取消主板型号随机（可自己定制），取消内存序列号随机（可自己定制），ide sata硬盘自己设置serial=20位序列号进行定制固定（不固定内部默认还是随机）。n卡独显直通43错误请二者选其一：ssdt.aml（不带电池）和ssdt-battery.aml（带个虚拟电池），台式机u选无电池，笔记本u选有电池，加载ssdt后43错误解决了就行。
 
@@ -137,6 +144,7 @@ args: -acpitable file=/root/ssdt.aml -cpu host,host-cache-info=on,hypervisor=off
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=AICodo/pve-emu-realpc&type=Date)](https://www.star-history.com/#AICodo/pve-emu-realpc&Date)
+
 
 
 
