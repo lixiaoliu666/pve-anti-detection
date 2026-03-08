@@ -1,7 +1,3 @@
-李晓流 & 大大帅666 作品 202408230出品
-李晓流 b站地址：https://space.bilibili.com/565938745
-大大帅666 b站地址 https://space.bilibili.com/14205798
-
 目前过不了的检测列表： 这个检测软件的源码下载地址在：https://github.com/LordNoteworthy/al-khaser 你可以使用vs2022（一定是这个版本，旧了的没法编译）进行编译自行测试过下面得问题。
 也可以使用pafish64.exe进行检测，源码地址：https://github.com/a0rtega/pafish  需要用Mingw编译，懒得编译我直接下载的可运行版本
 注意： pafish和al-khaser是虚拟机环境检测的两个金标准
@@ -50,6 +46,7 @@ object: ROOT#vdrvroot#0000#{2e34d650-5819-42ca-84ae-d30803bae505}
 我个人的建议是直通sata硬盘或者m2硬盘给虚拟机，还有有线物理网卡（usb网卡）给虚拟机进行测试。
 
 另外增加了 VMAware目前过不了的检测说明.txt也可以去看看
+
 
 
 
