@@ -49,7 +49,7 @@ ssdt.aml
 
 dpkg -l|grep pve-qemu-kvm
 
-4、如果是10.x，直接安装这2个反检测包就是
+4、如果是10.x，直接安装这2个包就是
 
 dpkg -i pve-qemu-kvm_10.xxx_amd64.deb  xxx代表你具体下载的版本
 
@@ -80,7 +80,7 @@ apt reinstall pve-edk2-firmware-ovmf 或者 apt reinstall pve-edk2-firmware-ovmf
 
 5、新建虚拟机
 
-虚拟机使用ovmf+q35（推荐q35）或者ovmf+i440fx，配置中注意硬盘一定选择sata硬盘（至少128g，50g 80g等大小太不像物理机硬盘大小，别对硬盘大小太抠抠扣扣搜搜了，scsi及virtio硬盘光驱网卡设备等避开使用），ide或者sata光驱，显示先选择标准（弄好后再直通独显核显vgpu等），cpu选择host（1插槽多核心这点一定注意），网卡选择e1000显卡（注意网卡mac地址问题，免得检测虚拟机），避开各种virtio设备（SCSI硬盘光驱、virtio网卡、virtioBlock硬盘、virtio-GPU等），并修改虚拟机的args参数和我一样。内存请使用8192 16384 4096这三个数值并且不开ballooning（更加像物理机内存大小），对应8g 16g 4g，其他大小请勿设置（太假太像虚拟机）。
+虚拟机使用ovmf+q35（推荐q35）或者ovmf+i440fx，配置中注意硬盘一定选择sata硬盘（至少128g，50g 80g等大小太不像物理机硬盘大小，别对硬盘大小太抠抠扣扣搜搜了，scsi及virtio硬盘光驱网卡设备等避开使用），ide或者sata光驱，显示先选择标准（弄好后再直通独显核显vgpu等），cpu选择host（1插槽多核心这点一定注意），网卡选择e1000显卡（注意网卡mac地址问题，免得检测到是虚拟机），避开各种virtio设备（SCSI硬盘光驱、virtio网卡、virtioBlock硬盘、virtio-GPU等），并修改虚拟机的args参数和我一样。内存请使用8192 16384 4096这三个数值并且不开ballooning（更加像物理机内存大小），对应8g 16g 4g，其他大小请勿设置（太假太像虚拟机）。
 
 只有一个原则：硬盘大小，内存大小，网卡都得像真实物理机配置！！！
 
@@ -134,7 +134,7 @@ usb1: host=258a:002a
 
 vmgenid: 2271babc-cafc-4c68-be8b-2bb3157c9924
 
-补充：qemu 10 虚拟机中的args参数我现在全部做了除了上面的可以设置（其他做了影藏定制），就用我这上面的args就是。硬盘不想序列号随机请ide sata设置serial=0123456789ABCDEF0123  类似这样20位数据）。aida64你进去看就知道有些什么硬件了（风扇、温度、电压等）
+补充：qemu 10 虚拟机中的args参数我现在全部做了除了上面的可以设置（其他做了隐藏定制），就用我这上面的args就是。硬盘不想序列号随机请ide sata设置serial=0123456789ABCDEF0123  类似这样20位数据）。aida64你进去看就知道有些什么硬件了（风扇、温度、电压等）
 
 如果是qemu 7和8，需要使用下面的args
 
