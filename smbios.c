@@ -25,7 +25,7 @@
 #include "system/system.h"
 #include "qemu/uuid.h"
 #include "hw/firmware/smbios.h"
-#include "hw/loader.h"
+#include "hw/core/loader.h"
 #include "hw/boards.h"
 #include "hw/pci/pci_bus.h"
 #include "hw/pci/pci_device.h"
@@ -1503,8 +1503,8 @@ static int save_opt_one(void *opaque,
                 break;
             }
             if (ret < 0) {
-                error_setg(errp, "Unable to read from %s: %s",
-                           value, strerror(errno));
+                error_setg_errno(errp, errno, "Unable to read from %s",
+                            value);
                 qemu_close(fd);
                 return -1;
             }
